@@ -1,0 +1,7 @@
+<h2>{{model.name}}</h2>
+
+{{#link-to 'companies.company.edit' model}}Edit{{/link-to}}
+
+<button {{action "delete"}}>Delete</button>
+
+{{outlet}}

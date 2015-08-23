@@ -1,0 +1,17 @@
+{{link-to 'New company' 'companies.new'}}
+
+<h2>Companies</h2>
+<ul class="companies">
+  {{#each model as |company|}}
+  <li class="company">
+    <!-- {{link-to company.name companies.show 1}} -->
+    {{#link-to 'companies.company' company}}
+      {{company.name}}
+    {{/link-to}}
+  </li>
+  {{else}}
+    No company yet!
+  {{/each}}
+</ul>
+
+{{outlet}}

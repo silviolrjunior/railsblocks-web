@@ -6,6 +6,12 @@ var Router = Ember.Router.extend({
 });
 
 Router.map(function() {
+  this.route('companies', function() {
+    this.route('new');
+    this.route('company', { path: '/:company_id' }, function() {
+      this.route('edit');
+    });
+  });
 });
 
 export default Router;
