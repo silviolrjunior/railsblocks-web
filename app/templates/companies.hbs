@@ -11,50 +11,47 @@
         </li>
       </ol>
     </div>
-    <div class='col-lg-2'></div>
   </div>
   <div class='row'>
-    <div class='col-lg-12'>
-      <div>
-        <div class='clearfix'>
-          <div class='col-lg-7'>
-            <h2>
-              Companies
-              {{link-to 'New company' 'companies.new' class="btn btn-inverse pull-right"}}
-            </h2>
-            <table class="table">
-              <thead>
-                <tr>
-                  <th>Name</th>
-                  <th>Actions</th>
-                </tr>
-              </thead>
-              <tbody class="companies">
-                {{#each model as |company|}}
-                <tr>
-                  <td>
-                    {{#link-to 'companies.company' company}}
-                      {{company.name}}
-                    {{/link-to}}
-                  </td>
-                  <td>
-                    {{#link-to 'companies.company' company}}
-                      Show
-                    {{/link-to}} 
-                    {{#link-to 'companies.company.edit' company}}
-                      Edit
-                    {{/link-to}}
-                  </td>
-                </tr>
-                {{else}}
-                  <tr><td>No company yet!</td></tr>
-                {{/each}}
-              </tbody>
-            </table>
-          </div>
-          <div class='col-lg-5'>
-            {{outlet}}  
-          </div>
+    <div class='col-md-12'>      
+      <div class='clearfix'>
+        <div class='col-lg-7'>
+          <h2>
+            Companies
+            {{link-to 'New company' 'companies.new' class="btn btn-inverse pull-right"}}
+          </h2>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody class="companies">
+              {{#each model as |company|}}
+              <tr>
+                <td>
+                  {{#link-to 'companies.company' company}}
+                    {{company.name}}
+                  {{/link-to}}
+                </td>
+                <td>
+                  {{#link-to 'companies.company' company}}
+                    Show
+                  {{/link-to}} 
+                  {{#link-to 'companies.company.edit' company}}
+                    Edit
+                  {{/link-to}}
+                </td>
+              </tr>
+              {{else}}
+                <tr><td>No company yet!</td></tr>
+              {{/each}}
+            </tbody>
+          </table>
+        </div>
+        <div class='col-lg-5'>
+          {{outlet}}  
         </div>
       </div>
     </div>
