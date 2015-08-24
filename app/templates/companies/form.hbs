@@ -1,21 +1,17 @@
 <div class='wrapper wrapper-content'>
   <div class='row'>
     <div class='col-lg-12'>
-      <div class=''>
-        {{link-to 'Back companies' 'companies' class="btn btn-default"}}
-      </div>
-      <br>
-      <br>
       <form novalidate="novalidate" class="simple_form form-horizontal" id="" action="" method="post">
 
         <div class="form-group string required">
-          <label class="col-sm-2 string required control-label" for=""><abbr title="Requerido">*</abbr> Name</label>
-          <div class="col-sm-5">
+          <label class="col-sm-4 string required control-label" for=""><abbr title="Requerido">*</abbr> Name</label>
+          <div class="col-sm-8">
             {{input value=model.name id="name" class="string required form-control"}}
           </div>
         </div>
 
-        <div class='col-md-3 col-md-offset-7 text-right'>
+        <div class='col-md-12 text-right'>
+          {{link-to 'Back companies' 'companies' class="btn btn-default"}}
           <button {{action 'save'}} id="save" class="btn btn-default btn-inverse">Submit</button>
         </div>
       </form>
