@@ -20,7 +20,7 @@ test('visiting /companies', function(assert) {
     assert.equal(currentURL(), '/companies');
   });
   andThen(function() {
-    assert.equal(find('.companies li').length, 3);
+    assert.equal(find('.companies tr').length, 3);
   });
 });
 
@@ -31,7 +31,7 @@ test('create a new company', function(assert) {
     click('button#save');
   });
   andThen(function() {
-    assert.equal($.trim($('li:last a').text()), 'Acme Inc');
+    assert.equal($.trim($('.companies tr td:first').text()), 'Acme Inc');
   });
 });
 
@@ -46,7 +46,7 @@ test('edit a company', function(assert) {
     click('button#save');
   });
   andThen(function() {
-    assert.equal($.trim($('li:last a').text()), 'New Company Name');
+    assert.equal($.trim($('.companies tr td:first').text()), 'New Company Name');
   });
 });
 
