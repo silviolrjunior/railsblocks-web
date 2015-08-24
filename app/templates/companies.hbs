@@ -1,17 +1,79 @@
-{{link-to 'New company' 'companies.new'}}
-
-<h2>Companies</h2>
-<ul class="companies">
-  {{#each model as |company|}}
-  <li class="company">
-    <!-- {{link-to company.name companies.show 1}} -->
-    {{#link-to 'companies.company' company}}
-      {{company.name}}
-    {{/link-to}}
-  </li>
-  {{else}}
-    No company yet!
-  {{/each}}
-</ul>
+<section>
+  <div class='row'>
+    <div class='col-lg-10'>
+      <h2>Listing Companies</h2>
+      <ol class='breadcrumb'>
+        <li>
+          <a href='/'>Home</a>
+        </li>
+        <li class='active'>
+          <a>Companies</a>
+        </li>
+      </ol>
+    </div>
+    <div class='col-lg-2'></div>
+  </div>
+  <div class='row'>
+    <div class='col-lg-12'>
+      <div>
+        <div>
+          <div class='col-lg-8'>
+            <h2>Companies</h2>
+          </div>
+          <div class='col-lg-4'></div>
+          {{link-to 'New company' 'companies.new' class="btn btn-inverse"}}
+        </div>
+        <div class='clearfix'>
+          <div class='col-lg-8'>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody class="companies">
+                {{#each model as |company|}}
+                <tr>
+                  <td>
+                    {{#link-to 'companies.company' company}}
+                      {{company.name}}
+                    {{/link-to}}
+                  </td>
+                  <td>
+                    {{#link-to 'companies.company' company}}
+                      Show
+                    {{/link-to}} 
+                    {{#link-to 'companies.company.edit' company}}
+                      Edit
+                    {{/link-to}}
+                  </td>
+                </tr>
+                {{else}}
+                  <tr><td>No company yet!</td></tr>
+                {{/each}}
+              </tbody>
+            </table>
+          </div>
+          <div class='col-lg-4'>
+            <br>
+            <div class='panel panel-default'>
+              <div class='panel-heading'>
+                <h3 class='panel-title'>
+                  Search
+                </h3>
+              </div>
+              <div class='panel-body'>
+                <form><input value="&#x2713;" type="hidden" /><div class="form-group string required"><label class="string required control-label"><abbr title="necessário">*</abbr> Name</label><input class="string required form-control" type="text"/></div>
+                <input type="submit" name="commit" value="Search" class="btn btn-default" />
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 {{outlet}}
