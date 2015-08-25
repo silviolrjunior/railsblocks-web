@@ -5,7 +5,7 @@ export default Ember.Route.extend({
     save: function() {
       var company = this.currentModel;
       company.save().then(() => {
-        this.transitionTo('companies.company', company.id);
+        this.transitionTo('admin.companies.company', company.id);
       });
     }
   }

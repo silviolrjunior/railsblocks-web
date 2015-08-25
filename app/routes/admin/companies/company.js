@@ -9,7 +9,7 @@ export default Ember.Route.extend({
       var post = this.currentModel;
       post.deleteRecord();
       post.save().then(() => {
-        this.transitionTo('companies');
+        this.transitionTo('admin.companies');
       });
     }
   }

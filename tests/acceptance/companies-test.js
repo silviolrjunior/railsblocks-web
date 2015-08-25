@@ -12,12 +12,12 @@ module('Acceptance | companies', {
   }
 });
 
-test('visiting /companies', function(assert) {
+test('visiting /admin/companies', function(assert) {
   server.createList('company', 3);
-  visit('/companies');
+  visit('/admin/companies');
 
   andThen(function() {
-    assert.equal(currentURL(), '/companies');
+    assert.equal(currentURL(), '/admin/companies');
   });
   andThen(function() {
     assert.equal(find('.companies tr').length, 3);
@@ -26,7 +26,7 @@ test('visiting /companies', function(assert) {
 
 test('create a new company', function(assert) {
   andThen(function() {
-    visit('/companies/new');
+    visit('/admin/companies/new');
     fillIn('input#name', 'Acme Inc');
     click('button#save');
   });
@@ -37,7 +37,7 @@ test('create a new company', function(assert) {
 
 test('edit a company', function(assert) {
   andThen(function() {
-    visit('/companies/new');
+    visit('/admin/companies/new');
     fillIn('input#name', 'Acme Inc');
     click('button#save');
     click("a:contains('Acme Inc')");
@@ -52,7 +52,7 @@ test('edit a company', function(assert) {
 
 test('delete a company', function(assert) {
   andThen(function() {
-    visit('/companies/new');
+    visit('/admin/companies/new');
     fillIn('input#name', 'Acme Inc');
     click('button#save');
     click("a:contains('Acme Inc')");
