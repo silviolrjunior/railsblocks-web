@@ -59,7 +59,21 @@ test('delete a company', function(assert) {
     click("button:contains('Delete')");
   });
   andThen(function() {
-    assert.equal(find('.companies li').length, 0);
+    assert.equal($.trim($('.companies tr td:first').text()), 'No company yet!');
+  });
+});
+
+
+test('edit the theme company', function(assert) {
+  server.createList('company', 1);
+  andThen(function() {
+    visit('/reseller/company');
+    click("a:contains('Edit')");
+    select('#theme-select', 'black');
+    click('button#save');
+  });
+  andThen(function() {
+    assert.equal($.trim($('.theme span:last').text()), 'black');
   });
 });
 
