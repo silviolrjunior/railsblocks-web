@@ -14,6 +14,11 @@ Router.map(function() {
       });
     });
   });
+  this.route('reseller', function() {
+    this.route('company', function(){
+      this.route('edit');
+    });
+  });
 });
 
 export default Router;

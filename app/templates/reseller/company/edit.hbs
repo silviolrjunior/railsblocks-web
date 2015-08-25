@@ -1,0 +1,23 @@
+<div class="form-inline col-md-12">
+  <form>
+    <div class="form-group">
+      <div class="col-md-3">
+        <label for="inputPassword" class="col-sm-9 control-label">Themes:</label>
+      </div>
+      <div class="col-md-4">
+        {{#x-select action="selectTheme" id="theme-select" value=model.theme class="form-control"}}
+          {{#each themes as |theme|}}
+            {{#x-option value=theme}}
+              {{theme}}
+            {{/x-option}}
+          {{/each}}
+        {{/x-select}}
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <button {{action 'save'}} id="save" class="btn btn-default">Change Theme</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
