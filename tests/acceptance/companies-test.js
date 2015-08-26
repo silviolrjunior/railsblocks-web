@@ -12,12 +12,12 @@ module('Acceptance | companies', {
   }
 });
 
-test('visiting /companies', function(assert) {
+test('visiting /admin/companies', function(assert) {
   server.createList('company', 3);
-  visit('/companies');
+  visit('/admin/companies');
 
   andThen(function() {
-    assert.equal(currentURL(), '/companies');
+    assert.equal(currentURL(), '/admin/companies');
   });
   andThen(function() {
     assert.equal(find('.companies tr').length, 3);
@@ -26,7 +26,7 @@ test('visiting /companies', function(assert) {
 
 test('create a new company', function(assert) {
   andThen(function() {
-    visit('/companies/new');
+    visit('/admin/companies/new');
     fillIn('input#name', 'Acme Inc');
     click('button#save');
   });
@@ -37,7 +37,7 @@ test('create a new company', function(assert) {
 
 test('edit a company', function(assert) {
   andThen(function() {
-    visit('/companies/new');
+    visit('/admin/companies/new');
     fillIn('input#name', 'Acme Inc');
     click('button#save');
     click("a:contains('Acme Inc')");
@@ -52,14 +52,28 @@ test('edit a company', function(assert) {
 
 test('delete a company', function(assert) {
   andThen(function() {
-    visit('/companies/new');
+    visit('/admin/companies/new');
     fillIn('input#name', 'Acme Inc');
     click('button#save');
     click("a:contains('Acme Inc')");
     click("button:contains('Delete')");
   });
   andThen(function() {
-    assert.equal(find('.companies li').length, 0);
+    assert.equal($.trim($('.companies tr td:first').text()), 'No company yet!');
+  });
+});
+
+
+test('edit the theme company', function(assert) {
+  server.createList('company', 1);
+  andThen(function() {
+    visit('/reseller/company');
+    click("a:contains('Edit')");
+    select('#theme-select', 'black');
+    click('button#save');
+  });
+  andThen(function() {
+    assert.equal($.trim($('.theme span:last').text()), 'black');
   });
 });
 
