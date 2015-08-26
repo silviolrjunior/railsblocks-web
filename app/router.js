@@ -6,9 +6,16 @@ var Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  this.route('companies', function() {
-    this.route('new');
-    this.route('company', { path: '/:company_id' }, function() {
+  this.route('admin', function() {
+    this.route('companies', function() {
+      this.route('new');
+      this.route('company', { path: '/:company_id' }, function() {
+        this.route('edit');
+      });
+    });
+  });
+  this.route('reseller', function() {
+    this.route('company', function(){
       this.route('edit');
     });
   });

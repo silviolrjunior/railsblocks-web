@@ -8,14 +8,8 @@ export default Ember.Route.extend({
     save: function() {
       var company = this.currentModel;
       company.save().then(() => {
-        this.transitionTo('companies');
+        this.transitionTo('admin.companies');
       });
-    },
-
-    delete: function() {
-    if(this.currentModel.get('id')==null) {
-      store.deleteRecord(post);
-    }
     }
   }
 });

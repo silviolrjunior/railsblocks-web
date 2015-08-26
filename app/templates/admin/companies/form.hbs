@@ -18,8 +18,12 @@
         </div>
 
         <div class='col-md-12 text-right'>
-          <button {{action 'delete'}} id="save" class="btn btn-primary">Back to Companies</button>
+
           
+          
+
+          <{{link-to 'Back companies' 'admin.companies' class="btn btn-default"}}
+
           <button {{action 'save'}} id="save" class="btn btn-primary">Submit</button>
         </div>
       </form>
