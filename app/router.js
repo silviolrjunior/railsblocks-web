@@ -7,18 +7,11 @@ var Router = Ember.Router.extend({
 
 Router.map(function() {
   this.route('admin', function() {
-    this.route('companies', function() {
-      this.route('new');
-      this.route('company', { path: '/:company_id' }, function() {
-        this.route('edit');
-      });
-    });
+    this.route('companies');
+    this.route('companies.company', { path: '/companies/:company_id' });
+    this.route('companies.new', { path: 'companies/new' });
   });
-  this.route('reseller', function() {
-    this.route('company', function(){
-      this.route('edit');
-    });
-  });
+  this.route('company', { path: 'company/:company_id' });
 });
 
 export default Router;

@@ -20,7 +20,7 @@ test('visiting /admin/companies', function(assert) {
     assert.equal(currentURL(), '/admin/companies');
   });
   andThen(function() {
-    assert.equal(find('.companies tr').length, 3);
+    assert.equal(find('.companies .companies-item').length, 3);
   });
 });
 
@@ -31,7 +31,7 @@ test('create a new company', function(assert) {
     click('button#save');
   });
   andThen(function() {
-    assert.equal($.trim($('.companies tr td:first').text()), 'Acme Inc');
+    assert.equal($.trim($('.companies .companies-item span').text()), 'Acme Inc');
   });
 });
 
@@ -41,12 +41,12 @@ test('edit a company', function(assert) {
     fillIn('input#name', 'Acme Inc');
     click('button#save');
     click("a:contains('Acme Inc')");
-    click("a:contains('Edit')");
+    click("button:contains('Change Name')");
     fillIn('input#name', 'New Company Name');
-    click('button#save');
+    click('button#save_bottom');
   });
   andThen(function() {
-    assert.equal($.trim($('.companies tr td:first').text()), 'New Company Name');
+    assert.equal($.trim($('.companies .companies-item span').text()), 'New Company Name');
   });
 });
 
@@ -56,24 +56,25 @@ test('delete a company', function(assert) {
     fillIn('input#name', 'Acme Inc');
     click('button#save');
     click("a:contains('Acme Inc')");
-    click("button:contains('Delete')");
+    click("a:contains('Delete Company')");
   });
   andThen(function() {
-    assert.equal($.trim($('.companies tr td:first').text()), 'No company yet!');
+    assert.equal($.trim($('.companies .companies-item span').text()), 'No company yet!');
   });
 });
 
 
 test('edit the theme company', function(assert) {
   server.createList('company', 1);
+  server.create('theme', {name: 'black'});
+  server.create('theme', {name: 'white'});
   andThen(function() {
-    visit('/reseller/company');
-    click("a:contains('Edit')");
+    visit('/company/1');
     select('#theme-select', 'black');
-    click('button#save');
+    click('button#save_bottom');
   });
   andThen(function() {
-    assert.equal($.trim($('.theme span:last').text()), 'black');
+    assert.equal($.trim($('.theme span').text()), 'black');
   });
 });
 

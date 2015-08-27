@@ -8,6 +8,8 @@ export default function() {
   this.post('/companies');
   this.put('/companies/:id');
   this.delete('/companies/:id');
+  this.get('/company/:id');
+  this.get('/themes');
 
   // These comments are here to help you get started. Feel free to delete them.
 
