@@ -15,17 +15,10 @@ export default Ember.Route.extend({
     controller.setProperties(model);
   },
   actions: {
-    delete: function() {
-      var company = this.currentModel.company;
-      company.deleteRecord();
-      company.save().then(() => {
-        this.transitionTo('admin.companies');
-      });
-    },
     save: function() {
       var company = this.currentModel.company;
       company.save().then(() => {
-        this.transitionTo('admin.companies');
+        this.transitionTo('company');
       });
     },
     selectTheme: function(value){

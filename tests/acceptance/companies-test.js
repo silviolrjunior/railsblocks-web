@@ -12,7 +12,7 @@ module('Acceptance | companies', {
   }
 });
 
-test('visiting /admin/companies', function(assert) {
+test('admin listing companies', function(assert) {
   server.createList('company', 3);
   visit('/admin/companies');
 
@@ -20,60 +20,75 @@ test('visiting /admin/companies', function(assert) {
     assert.equal(currentURL(), '/admin/companies');
   });
   andThen(function() {
-    assert.equal(find('.companies tr').length, 3);
+    assert.equal(find('.companies .s-element-item').length, 3);
   });
 });
 
-test('create a new company', function(assert) {
+test('admin create a new company', function(assert) {
   andThen(function() {
     visit('/admin/companies/new');
     fillIn('input#name', 'Acme Inc');
+    fillIn('input#domain', 'acme.com');
     click('button#save');
   });
   andThen(function() {
-    assert.equal($.trim($('.companies tr td:first').text()), 'Acme Inc');
+    assert.equal($.trim($('.companies .s-element-item span').text()), 'Acme Inc');
   });
 });
 
-test('edit a company', function(assert) {
+test('admin edit a company', function(assert) {
+  server.create('company', {name: 'Foo Inc.'});
   andThen(function() {
-    visit('/admin/companies/new');
-    fillIn('input#name', 'Acme Inc');
-    click('button#save');
-    click("a:contains('Acme Inc')");
-    click("a:contains('Edit')");
+    visit('/admin/companies');
+    click("a:contains('Foo Inc.')");
+    click("button:contains('Edit Name')");
     fillIn('input#name', 'New Company Name');
-    click('button#save');
+    click("button:contains('Done')");
+    click('button#save_bottom');
   });
   andThen(function() {
-    assert.equal($.trim($('.companies tr td:first').text()), 'New Company Name');
-  });
-});
-
-test('delete a company', function(assert) {
-  andThen(function() {
-    visit('/admin/companies/new');
-    fillIn('input#name', 'Acme Inc');
-    click('button#save');
-    click("a:contains('Acme Inc')");
-    click("button:contains('Delete')");
-  });
-  andThen(function() {
-    assert.equal($.trim($('.companies tr td:first').text()), 'No company yet!');
+    assert.equal($.trim($('.companies .s-element-item span').text()), 'New Company Name');
   });
 });
 
-
-test('edit the theme company', function(assert) {
-  server.createList('company', 1);
+test('admin delete a company', function(assert) {
+  server.create('company', {name: 'Foo Inc.'});
   andThen(function() {
-    visit('/reseller/company');
-    click("a:contains('Edit')");
+    visit('/admin/companies');
+    click("a:contains('Foo Inc.')");
+    click("a:contains('Delete Company')");
+  });
+  andThen(function() {
+    assert.equal($.trim($('.companies .s-element-item span').text()), 'No company yet!');
+  });
+});
+
+
+test('company edit your theme', function(assert) {
+  server.create('company');
+  server.create('theme', {name: 'black'});
+  server.create('theme', {name: 'white'});
+  andThen(function() {
+    visit('/company/1');
     select('#theme-select', 'black');
-    click('button#save');
+    click('button#save_bottom');
   });
   andThen(function() {
-    assert.equal($.trim($('.theme span:last').text()), 'black');
+    assert.equal($.trim($('.theme span').text()), 'black');
   });
 });
 
+test('company edit your domain', function(assert) {
+  server.create('company', { domain: 'foo.com'});
+  server.createList('theme', 3);
+  andThen(function() {
+    visit('/company/1');
+    click("button:contains('Edit Domain')");
+    fillIn('input#domain', 'acme.com');
+    click("button:contains('Done')");
+    click('button#save_bottom');
+  });
+  andThen(function() {
+    assert.equal($.trim($('.domain td').text()), 'acme.com');
+  });
+});

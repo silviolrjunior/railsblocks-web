@@ -1,59 +1,48 @@
-<section>
-  <div class='row'>
-    <div class='col-md-12'>
-      <h2>Listing Companies</h2>
-      <ol class='breadcrumb'>
-        <li>
-          <a href='/'>Home</a>
-        </li>
-        <li class='active'>
-          <a>Companies</a>
-        </li>
-      </ol>
-    </div>
+<div class='row wrapper'>
+  <div class='col-lg-10'>
+    <h3>Listing Companies</h3>
+    <ol class='breadcrumb'>
+      <li>
+        <a href='/'>Home</a>
+      </li>
+      <li>
+        <a>Companies</a>
+      </li>
+      <li class='active'>
+        <strong>Listing Companies</strong>
+      </li>
+    </ol>
   </div>
+  <div class='col-lg-2'></div>
+</div>
+<div class='wrapper wrapper-content'>
   <div class='row'>
-    <div class='col-md-12'>      
-      <div class='clearfix'>
-        <div class='col-lg-7'>
-          <h2>
-            Companies
-            {{link-to 'New company' 'admin.companies.new' class="btn btn-inverse pull-right"}}
-          </h2>
-          <table class="table">
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody class="companies">
-              {{#each model as |company|}}
-              <tr>
-                <td>
-                  {{#link-to 'admin.companies.company' company}}
-                    {{company.name}}
-                  {{/link-to}}
-                </td>
-                <td>
-                  {{#link-to 'admin.companies.company' company}}
-                    Show
-                  {{/link-to}} 
-                  {{#link-to 'admin.companies.company.edit' company}}
-                    Edit
-                  {{/link-to}}
-                </td>
-              </tr>
-              {{else}}
-                <tr><td>No company yet!</td></tr>
-              {{/each}}
-            </tbody>
-          </table>
-        </div>
-        <div class='col-lg-5'>
-          {{outlet}}  
-        </div>
+    <div class='col-lg-10 s-element companies'>
+      <div class=''>
+          <h4>Companies</h4>
       </div>
+      <div class="pull-right">
+        {{link-to 'New company' 'admin.companies.new' class="btn btn-default btn-inverse"}}
+      </div>
+      <br>
+      <br>
+      {{#each model as |company|}}
+        <div class="s-element-item">
+          <i class="fa fa-square"></i>
+          <span>
+            {{#link-to 'admin.companies.company' company}}
+              {{company.name}}
+            {{/link-to}}
+          </span>
+        </div>
+      {{else}}
+        <div class="s-element-item">
+          <i class="fa fa-square"></i>
+          <span>
+            No company yet!
+          </span>
+        </div>
+      {{/each}}
     </div>
   </div>
-</section>
+</div>
