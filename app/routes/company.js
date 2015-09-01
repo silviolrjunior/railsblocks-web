@@ -7,11 +7,6 @@ export default Ember.Route.extend({
       themes: this.store.findAll('theme')
     });
   },
-  serialize: function(company) {
-    return {
-      company_id: company.get('company_id')
-    };
-  },
   setupController: function(controller, model) {
     if(!model.company){
       model.company = model;

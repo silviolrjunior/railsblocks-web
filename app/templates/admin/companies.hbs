@@ -1,48 +1,48 @@
 <div class='row wrapper'>
-    <div class='col-lg-10'>
-        <h3>Listing Companies</h3>
-        <ol class='breadcrumb'>
-            <li>
-                <a href='/'>Home</a>
-            </li>
-            <li>
-                <a>Companies</a>
-            </li>
-            <li class='active'>
-                <strong>Listing Companies</strong>
-            </li>
-        </ol>
-    </div>
-    <div class='col-lg-2'></div>
+  <div class='col-lg-10'>
+    <h3>Listing Companies</h3>
+    <ol class='breadcrumb'>
+      <li>
+        <a href='/'>Home</a>
+      </li>
+      <li>
+        <a>Companies</a>
+      </li>
+      <li class='active'>
+        <strong>Listing Companies</strong>
+      </li>
+    </ol>
+  </div>
+  <div class='col-lg-2'></div>
 </div>
 <div class='wrapper wrapper-content'>
-    <div class='row'>
-        <div class='col-lg-10 companies'>
-            <div class=''>
-                <h4>Companies</h4>
-            </div>
-            <div class="pull-right">
-              {{link-to 'New company' 'admin.companies.new' class="btn btn-default btn-inverse"}}
-            </div>
-            <br>
-            <br>
-            {{#each model as |company|}}
-              <div class="companies-item">
-                <i class="fa fa-square"></i>
-                <span>
-                  {{#link-to 'admin.companies.company' company}}
-                    {{company.name}}
-                  {{/link-to}}
-                </span>
-              </div>
-            {{else}}
-              <div class="companies-item">
-                <i class="fa fa-square"></i>
-                <span>
-                  No company yet!
-                </span>
-              </div>
-            {{/each}}
+  <div class='row'>
+    <div class='col-lg-10 s-element companies'>
+      <div class=''>
+          <h4>Companies</h4>
+      </div>
+      <div class="pull-right">
+        {{link-to 'New company' 'admin.companies.new' class="btn btn-default btn-inverse"}}
+      </div>
+      <br>
+      <br>
+      {{#each model as |company|}}
+        <div class="s-element-item">
+          <i class="fa fa-square"></i>
+          <span>
+            {{#link-to 'admin.companies.company' company}}
+              {{company.name}}
+            {{/link-to}}
+          </span>
         </div>
+      {{else}}
+        <div class="s-element-item">
+          <i class="fa fa-square"></i>
+          <span>
+            No company yet!
+          </span>
+        </div>
+      {{/each}}
     </div>
+  </div>
 </div>
