@@ -5,5 +5,5 @@ export default Mirage.Factory.extend({
     return faker.company.companyName();
   },
   theme: "base",
-  domain: "mydomain.zertico.com"
+  domain: "mydomain.railblocks.io"
 });
