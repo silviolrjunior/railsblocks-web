@@ -1,3 +1,24 @@
+<div class='row wrapper'>
+  <div class='col-lg-12'>
+    <h3>Company - {{company.name}}</h3>
+    <ol class='breadcrumb'>
+      <li>
+        {{#link-to 'index'}}
+          Home
+        {{/link-to}}
+      </li>
+      <li>
+        {{#link-to 'admin.companies'}}
+          Companies
+        {{/link-to}}
+      </li>
+      <li class='active'>
+        <strong>Company</strong>
+      </li>
+    </ol>
+  </div>
+  <div class='col-lg-2'></div>
+</div>
 <div class='row wrapper backs'>
   <div class='col-lg-3 go-back'>
     {{#link-to 'admin.companies'}}
@@ -10,8 +31,8 @@
   </div>
   <div class='col-lg-4'>
     <div class="pull-right">
-      <a class="btn btn-default btn-default" {{action 'save'}} id="save_top" role="button"><i class="fa fa-floppy-o"></i> Save</a>
-      <a {{action "delete"}} class="btn btn-default btn-danger">
+      <a class="btn btn-default" {{action 'save'}} id="save_top" role="button"><i class="fa fa-floppy-o"></i> Save</a>
+      <a {{action "delete"}} class="btn btn-danger">
         <i class="fa fa-times"></i>
         Delete Company
       </a>
@@ -62,9 +83,9 @@
           </div>  
           <div class="col-sm-3">
             {{#if isEditingName}}
-              <button {{action 'doneEditingName'}} class='btn btn-default btn-inverse'>Done</button>
+              <button {{action 'doneEditingName'}} class='btn btn-default'>Done</button>
             {{else}}
-              <button {{action 'editName'}} class="btn btn-default btn-inverse">Edit Name</button>
+              <button {{action 'editName'}} class="btn btn-default">Edit Name</button>
             {{/if}}
           </div>
         </div>
@@ -108,9 +129,9 @@
         <h5>Custom Domains</h5>
         <div class="pull-right">
           {{#if isEditingDomain}}
-            <button {{action 'doneEditingDomain'}} class='btn btn-default btn-inverse'>Done</button>
+            <button {{action 'doneEditingDomain'}} class='btn btn-default'>Done</button>
           {{else}}
-            <button {{action 'editDomain'}} class="btn btn-default btn-inverse">Edit Domain</button>
+            <button {{action 'editDomain'}} class="btn btn-default">Edit Domain</button>
           {{/if}}
         </div>
         <table class="table table-striped">

@@ -1,0 +1,11 @@
+<div id="wrapper">
+  <div id="sidebar-wrapper">
+    {{partial "layouts/admin/sidebar"}}
+  </div>
+  <div id="page-content-wrapper" class="gray-bg">
+    {{partial "layouts/admin/header"}}
+    <div class='box_notice'></div>
+    {{outlet}}
+  </div>
+  {{partial "layouts/admin/footer"}}
+</div>

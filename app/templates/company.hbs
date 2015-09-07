@@ -4,7 +4,7 @@
     <span>{{company.name}}</span>
   </div>
   <div class="pull-right">
-    <a class="btn btn-default btn-default" {{action 'save'}} id="save_top" role="button"><i class="fa fa-floppy-o"></i> Save</a>
+    <a class="btn btn-default" {{action 'save'}} id="save_top" role="button"><i class="fa fa-floppy-o"></i> Save</a>
   </div>
 </div>
 <div class='row wrapper backs-nav'>
@@ -51,9 +51,9 @@
           </div>  
           <div class="col-sm-3">
             {{#if isEditingName}}
-              <button {{action 'doneEditingName'}} class='btn btn-default btn-inverse'>Done</button>
+              <button {{action 'doneEditingName'}} class='btn btn-default'>Done</button>
             {{else}}
-              <button {{action 'editName'}} class="btn btn-default btn-inverse">Edit Name</button>
+              <button {{action 'editName'}} class="btn btn-default">Edit Name</button>
             {{/if}}
           </div>
         </div>
@@ -100,9 +100,9 @@
         <h5>Custom Domains</h5>
         <div class="pull-right">
           {{#if isEditingDomain}}
-            <button {{action 'doneEditingDomain'}} class='btn btn-default btn-inverse'>Done</button>
+            <button {{action 'doneEditingDomain'}} class='btn btn-default'>Done</button>
           {{else}}
-            <button {{action 'editDomain'}} class="btn btn-default btn-inverse">Edit Domain</button>
+            <button {{action 'editDomain'}} class="btn btn-default">Edit Domain</button>
           {{/if}}
         </div>
         <table class="table table-striped">
