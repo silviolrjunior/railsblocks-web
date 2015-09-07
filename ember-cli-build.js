@@ -23,10 +23,10 @@ module.exports = function(defaults) {
   app.import('bower_components/railsblocks-theme/dist/js/theme.min.js');
   
   app.import('bower_components/railsblocks-theme/dist/fonts/fontawesome-webfont.ttf', {
-    destDir: 'assets/fonts'
+    destDir: 'fonts'
   });
   app.import('bower_components/railsblocks-theme/dist/fonts/OpenSans-Regular-webfont.ttf', {
-    destDir: 'assets/fonts'
+    destDir: 'fonts'
   });
 
   return app.toTree();
