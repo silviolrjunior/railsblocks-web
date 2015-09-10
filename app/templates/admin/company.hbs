@@ -1,10 +1,38 @@
+<div class='row wrapper'>
+  <div class='col-lg-12'>
+    <h3>Company - {{company.name}}</h3>
+    <ol class='breadcrumb'>
+      <li>
+        {{#link-to 'index'}}
+          Home
+        {{/link-to}}
+      </li>
+      <li>
+        {{#link-to 'admin'}}
+          Admin
+        {{/link-to}}
+      </li>
+      <li class='active'>
+        <strong>My Company</strong>
+      </li>
+    </ol>
+  </div>
+  <div class='col-lg-2'></div>
+</div>
 <div class='row wrapper backs'>
-  <div class='col-lg-3'></div>
+  <div class='col-lg-3 go-back'>
+    {{#link-to 'admin'}}
+      <i class="fa fa-angle-left"></i>
+      <span>Admin</span>
+    {{/link-to}}
+  </div>
   <div class='col-lg-5 title'>
     <span>{{company.name}}</span>
   </div>
-  <div class="pull-right">
-    <a class="btn btn-default" {{action 'save'}} id="save_top" role="button"><i class="fa fa-floppy-o"></i> Save</a>
+  <div class="col-lg-4">
+    <div class="pull-right">
+      <a class="btn btn-default" {{action 'save'}} id="save_top" role="button"><i class="fa fa-floppy-o"></i> Save</a>
+    </div>
   </div>
 </div>
 <div class='row wrapper backs-nav'>

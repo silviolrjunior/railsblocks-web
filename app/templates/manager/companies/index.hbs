@@ -21,7 +21,7 @@
           <h4>Companies</h4>
       </div>
       <div class="pull-right">
-        {{link-to 'New company' 'admin.companies.new' class="btn btn-default"}}
+        {{link-to 'New company' 'manager.companies.new' class="btn btn-default"}}
       </div>
       <br>
       <br>
@@ -29,7 +29,7 @@
         <div class="s-element-item">
           <i class="fa fa-square"></i>
           <span>
-            {{#link-to 'admin.companies.company' company}}
+            {{#link-to 'manager.companies.company' company}}
               {{company.name}}
             {{/link-to}}
           </span>

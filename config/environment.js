@@ -19,6 +19,10 @@ module.exports = function(environment) {
     }
   };
 
+  ENV['simple-auth'] = {
+    store: 'session-store:local-storage'
+  }
+
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
@@ -27,7 +31,7 @@ module.exports = function(environment) {
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
     ENV.contentSecurityPolicy = {
       'default-src': "'none'",
-      'script-src': "'self'",
+      'script-src': "'self' ajax.googleapis.com",
       'font-src': "'self' data: fonts.gstatic.com",
       'connect-src': "'self' http://localhost:4000",
       'img-src': "'self'",
@@ -46,6 +50,10 @@ module.exports = function(environment) {
     ENV.APP.LOG_VIEW_LOOKUPS = false;
 
     ENV.APP.rootElement = '#ember-testing';
+
+    ENV['simple-auth'] = {
+      store: 'simple-auth-session-store:ephemeral'
+    }
   }
 
   if (environment === 'production') {

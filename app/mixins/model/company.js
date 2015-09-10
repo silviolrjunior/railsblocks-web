@@ -1,6 +1,7 @@
+import Ember from 'ember';
 import DS from 'ember-data';
 
-export default DS.Model.extend({
+export default Ember.Mixin.create({
   name: DS.attr('string'),
   domain: DS.attr('string'),
   theme: DS.attr('string')

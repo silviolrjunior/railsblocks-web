@@ -3,7 +3,7 @@ import Ember from 'ember';
 export default Ember.Route.extend({
   model: function(params) {
     return Ember.RSVP.hash({
-      company: this.store.find('company', params.company_id),
+      company: this.store.find('manager/company', params.company_id),
       themes: this.store.findAll('theme')
     });
   },
@@ -15,10 +15,17 @@ export default Ember.Route.extend({
     controller.setProperties(model);
   },
   actions: {
+    delete: function() {
+      var company = this.currentModel.company;
+      company.deleteRecord();
+      company.save().then(() => {
+        this.transitionTo('manager.companies');
+      });
+    },
     save: function() {
       var company = this.currentModel.company;
       company.save().then(() => {
-        this.transitionTo('company');
+        this.transitionTo('manager.companies');
       });
     },
     selectTheme: function(value){
