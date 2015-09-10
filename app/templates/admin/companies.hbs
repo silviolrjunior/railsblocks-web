@@ -18,12 +18,13 @@
         <div class='col-lg-7'>
           <h2>
             Companies
-            {{link-to 'New company' 'companies.new' class="btn btn-inverse pull-right"}}
+            {{link-to 'New company' 'admin.companies.new' class="btn btn-inverse pull-right"}}
           </h2>
           <table class="table">
             <thead>
               <tr>
                 <th>Name</th>
+                <th>Domain</th>
                 <th>Actions</th>
               </tr>
             </thead>
@@ -31,15 +32,21 @@
               {{#each model as |company|}}
               <tr>
                 <td>
-                  {{#link-to 'companies.company' company}}
+                  {{#link-to 'admin.companies.company' company}}
                     {{company.name}}
                   {{/link-to}}
                 </td>
                 <td>
-                  {{#link-to 'companies.company' company}}
+
+                  {{#link-to 'admin.companies.company' company}}
+                    {{company.domain}}
+                  {{/link-to}}
+                </td>
+                <td>
+                  {{#link-to 'admin.companies.company' company}}
                     Show
                   {{/link-to}} 
-                  {{#link-to 'companies.company.edit' company}}
+                  {{#link-to 'admin.companies.company.edit' company}}
                     Edit
                   {{/link-to}}
                 </td>
